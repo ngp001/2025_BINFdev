@@ -73,6 +73,13 @@ annoColors <- list(
 ## Create a basic heatmap##
 ################################################
 ################################################
+pheatmap(
+  sampleData,
+  main="Basic Heatmap",
+  clustering_distance_rows = "euclidean",
+  clustering_distance_columns = "euclidean",
+  clustering_method = "ward.D",
+  filename="basic_heatmap_{projectID}.pdf")
 
 
 ################################################
@@ -80,3 +87,17 @@ annoColors <- list(
 ## Create a basic heatmap##
 ################################################
 ################################################
+pheatmap(
+  sampleData,
+  main="Complex Heatmap",
+  clustering_distance_rows = "euclidean",
+  clustering_distance_columns = "euclidean",
+  clustering_method = "ward.D",
+  legend_breaks = c(-3,0,2), # scale values
+  legend_labels = c('low','medium','high'), # set scale labels
+  annotation_colors = annoColors, # Apply annotation colors
+  annotation_col=annoData, # Add annotation data
+  annotation_names_col=FALSE, # Remove the title from the column annotations
+  annotation_row=geneFunctions,# Add row annotations
+  annotation_names_row=FALSE,# Remove the title from the row annotations
+  filename="complex_heatmap_{projectID}.pdf")
